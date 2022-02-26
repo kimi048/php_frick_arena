@@ -1,86 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Flick Arena</title>
-
-
-    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-
-    <!-- Bootstrap Core CSS -->
-    <link href="resources/css/bootstrap-4.4.1/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="resources/css/global.css" rel="stylesheet">
-
-    <!-- jQuery -->
-    <script src="resources/js/jquery.min.js"></script>
-
-    <!-- Bootstrap JS -->
-    <!-- <script src="css/bootstrap-4.4.1/js/bootstrap.min.js"></script> -->
-</head>
+<?
+    include "includes/head.php";
+?>
 
 <body>
     <div class="container">
 
-        <header class="blog-header py-3">
-            <div class="row flex-nowrap justify-content-between align-items-center">
-            <div class="col-4 pt-1">
-                <a class="text-muted" href="#">Hello John</a>
-            </div>
-            <div class="col-4 text-center">
-                <a class="blog-header-logo text-dark" href="#">Flick Arena</a>
-            </div>
-            <div class="col-4 d-flex justify-content-end align-items-center">
-                <!-- <a class="btn btn-sm btn-outline-secondary mr-1" href="#">Admin</a> -->
-                <a class="btn btn-sm btn-outline-info" href="#">Log in</a>
-            </div>
-            </div>
-        </header>
+        <!-- NAVIGATION -->
+        <? include "includes/header.php"; ?>
 
-        <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-            <div class="col-md-6 px-0">
-            <h1 class="display-4 font-italic">Title for a featured post</h1>
-            <p class="lead my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Read more...</a></p>
-            </div>
-        </div>
+        <!-- FEATURED -->
+        <? include "includes/widgets/featured.php"; ?>        
 
-        <div class="row mb-2">
-            <div class="col-md-6">
-            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary">Category</strong>
-                    <div class="mb-1 text-muted">Nov 12</div>
-                    <p class="card-text mb-auto">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <a href="#" class="stretched-link">Read more...</a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                </div>
-            </div>
-            </div>
-            <div class="col-md-6">
-            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary">Category</strong>
-                    <div class="mb-1 text-muted">Nov 12</div>
-                    <p class="card-text mb-auto">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <a href="#" class="stretched-link">Read more...</a>
-                </div>
-                <div class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                </div>
-            </div>
-            </div>
-        </div>
+        <!-- BLOCKS -->
+        <? include "includes/widgets/blocks.php"; ?>
 
         <main role="main" class="container">
             <div class="row">
@@ -102,23 +37,9 @@
                     </div><!-- /.blog-post -->
 
                 </div><!-- /.blog-main -->
-
-                <aside class="col-md-4 blog-sidebar">
                 
-                    <div class="p-4">
-                        <h4 class="font-italic">Sidebar 1</h4>
-                        <div>
-                            some content
-                        </div>
-                    </div>
-
-                    <div class="p-4">
-                        <h4 class="font-italic">Sidebar 1</h4>
-                        <div>
-                            some content
-                        </div>
-                    </div>
-                </aside>
+                <!-- SIDEBAR -->
+                <?php include "includes/widgets/sidebar.php"; ?>
 
             </div>
 
@@ -126,12 +47,4 @@
 
     </div>
 
-    
-    <footer class="blog-footer">
-        <a class="blog-header-logo text-dark" href="#">Flick Arena</a>
-    </footer> 
-</body>
-
-</html>
-
-
+<?php  include "includes/footer.php";?>
