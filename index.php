@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
 
 <?
+    include "includes/utils/config.php";
     include "includes/head.php";
 ?>
 
-<body>
     <div class="container">
 
         <!-- NAVIGATION -->

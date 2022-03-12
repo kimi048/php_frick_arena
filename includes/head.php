@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
 
     <meta charset="utf-8">
@@ -6,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Flick Arena</title>
+    <title><?php echo config("site_name"); ?></title>
 
 
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
@@ -23,3 +25,4 @@
     <!-- Bootstrap JS -->
     <!-- <script src="css/bootstrap-4.4.1/js/bootstrap.min.js"></script> -->
 </head>
+<body>
