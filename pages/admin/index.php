@@ -1,18 +1,18 @@
 <?php
     include  "../../includes/utils/config.php";
-    include  "../../includes/admin/admin_head.php";
+    include  ADMIN_HEAD;
 
 ?>
     
     <!-- NAVIGATION -->
-<?php include  "../../includes/admin/admin_nav.php"; ?> 
+<?php include ADMIN_NAV ?> 
 
 
     <div class="container-fluid">
         <div class="row">
 
             <!--  START SIDEBAR -->
-            <?php include "../../includes/admin/admin_sidebar.php"; ?>
+            <?php include ADMIN_SIDEBAR; ?>
             <!-- END SIDEBAR -->
 
             <!--  START CONTENT -->
@@ -29,7 +29,7 @@
         </div>
     </div>
 
-<?php include  "../../includes/admin/admin_footer.php"; ?>
+<?php include  ADMIN_FOOTER; ?>
 
 
 

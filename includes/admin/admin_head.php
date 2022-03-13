@@ -15,12 +15,12 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Bootstrap Core CSS -->
-    <link href="../../resources/css/bootstrap-4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo config("site_domain"); ?>/resources/css/bootstrap-4.4.1/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../../resources/css/admin_global.css" rel="stylesheet">
+    <link href="<?php echo config("site_domain"); ?>/resources/css/admin_global.css" rel="stylesheet">
      <!-- jQuery -->
-     <script src="../../resources/js/jquery.min.js"></script>
+     <script src="<?php echo config("site_domain"); ?>/resources/js/jquery.min.js"></script>
 
     <!-- Bootstrap JS -->
     <!-- <script src="css/bootstrap-4.4.1/js/bootstrap.min.js"></script> -->

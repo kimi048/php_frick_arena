@@ -1,19 +1,19 @@
 
 <?
     include "includes/utils/config.php";
-    include "includes/head.php";
+    include HEAD;
 ?>
 
     <div class="container">
 
         <!-- NAVIGATION -->
-        <? include "includes/header.php"; ?>
+        <? include DIR_BASE."/header.php"; ?>
 
         <!-- FEATURED -->
-        <? include "includes/widgets/featured.php"; ?>        
+        <? include DIR_BASE."/widgets/featured.php"; ?>        
 
         <!-- BLOCKS -->
-        <? include "includes/widgets/blocks.php"; ?>
+        <? include DIR_BASE."/widgets/blocks.php"; ?>
 
         <main role="main" class="container">
             <div class="row">
@@ -37,7 +37,7 @@
                 </div><!-- /.blog-main -->
                 
                 <!-- SIDEBAR -->
-                <?php include "includes/widgets/sidebar.php"; ?>
+                <?php include DIR_BASE."/widgets/sidebar.php"; ?>
 
             </div>
 
@@ -45,4 +45,4 @@
 
     </div>
 
-<?php  include "includes/footer.php";?>
+<?php  include FOOTER;?>
