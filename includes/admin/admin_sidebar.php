@@ -2,51 +2,51 @@
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
       <li class="nav-item nav-item-main">
-          <a class="nav-link active" href="#">
+          <a class="nav-link active" href="<?php echo getRoute('admin') ?>">
               <i class="fa fa-home"></i>
               Dashboard <span class="sr-only">(current)</span>
           </a>
       </li>
       <li class="nav-item nav-item-main ">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?php echo getRoute('admin_posts') ?>">
               <i class="fa fa-sticky-note"></i>
               Posts
           </a>
           <ul class="nav flex-column ml-4">
               <li class="nav-item">
-                  <a class="nav-link" href="#"> Add post </a>
+                  <a class="nav-link" href="<?php echo getRoute('admin_posts') ?>"> Add post </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="#"> Edit post </a>
+                  <a class="nav-link" href="<?php echo getRoute('admin_posts') ?>"> Edit post </a>
               </li>
           </ul>
       </li>
       <li class="nav-item nav-item-main ">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?php echo getRoute('admin_users') ?>">
               <i class="fa fa-users"></i>
               Users
           </a>
           <ul class="nav flex-column ml-4">
               <li class="nav-item">
-                  <a class="nav-link" href="#"> Add user </a>
+                  <a class="nav-link" href="<?php echo getRoute('admin_users') ?>"> Add user </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="#"> Edit user </a>
+                  <a class="nav-link" href="<?php echo getRoute('admin_users') ?>"> Edit user </a>
               </li>
           </ul>
       </li>
       <li class="nav-item nav-item-main">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="<?php echo getRoute('admin_profile') ?>">
               <i class="fa fa-user"></i>
               Profile
           </a>
       </li>
-      <li class="nav-item">
-          <a class="nav-link" href="#">
+      <!-- <li class="nav-item">
+          <a class="nav-link" href="<?php echo getRoute('admin_messages') ?>">
               <i class="fa fa-inbox"></i>
               Messages
           </a>
-      </li>
+      </li> -->
     </ul>
 
   </div>

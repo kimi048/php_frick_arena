@@ -25,11 +25,23 @@ function config($key = ''){
     'site_name' => 'Flickarena',
     'site_domain' => 'http://'.$_SERVER['HTTP_HOST'],
     'route' => [
-      'home' => '',
-      'posts' => 'posts'
+      'home' => '/',
+      'posts' => 'posts',
+      'login' => '/pages/log_in.php',
+      'admin' => '/pages/admin',
+      'admin_profile' => '/pages/admin/pages/profile',
+      'admin_posts' => '/pages/admin/pages/posts',
+      'admin_users' => '/pages/admin/pages/users',
+      'admin_messages' => '/pages/admin/pages/messages',
+      'logout' => '/pages/admin/pages/logout.php'
     ]
   ];
   return isset($config[$key]) ? $config[$key] : null ;
 }
+function getRoute( $key ='' ){
+  $routes = config('route');
+  return isset($routes[$key]) ? $routes[$key] : null ;
+}
+
 
 ?>
