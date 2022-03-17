@@ -24,7 +24,7 @@
       <li class="nav-item nav-item-main ">
           <a class="nav-link" href="<?php echo getRoute('admin_users') ?>">
               <i class="fa fa-users"></i>
-              Users
+              Userss
           </a>
           <ul class="nav flex-column ml-4">
               <li class="nav-item">
