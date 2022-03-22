@@ -24,14 +24,14 @@
       <li class="nav-item nav-item-main ">
           <a class="nav-link" href="<?php echo getRoute('admin_users') ?>">
               <i class="fa fa-users"></i>
-              Userss
+              Users
           </a>
           <ul class="nav flex-column ml-4">
               <li class="nav-item">
-                  <a class="nav-link" href="<?php echo getRoute('admin_users') ?>"> Add user </a>
+                  <a class="nav-link" href="<?php echo getRoute('admin_users') ?>?source=add"> Add user </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="<?php echo getRoute('admin_users') ?>"> Edit user </a>
+                  <a class="nav-link" href="<?php echo getRoute('admin_users') ?>?source=edit"> Edit user </a>
               </li>
           </ul>
       </li>
