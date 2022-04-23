@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   $user_firstname = $_POST['user_firstname'];
   $user_lastname = $_POST['user_lastname'];
@@ -18,6 +19,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   echo "User Created";
 
 }
+=======
+>>>>>>> 18cafea7464c00a8ebec7fa7bb51da3b497c0623
 
 
 ?>
@@ -27,7 +30,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </div>
 <form action="" method="POST">
   <div class="form-group">
+<<<<<<< HEAD
     <label for="user_firstname">Name</label>
+=======
+    <label for="user_firtname">Name</label>
+>>>>>>> 18cafea7464c00a8ebec7fa7bb51da3b497c0623
     <input type="text" class="form-control" id="user_firstname" name="user_firstname">
   </div>
 
