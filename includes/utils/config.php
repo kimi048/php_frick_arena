@@ -1,6 +1,8 @@
 <?php
 ob_start();
 
+include 'functions.php';
+
 define('DIR_BASE',dirname(dirname(__FILE__)).'/');
 define('HEAD', DIR_BASE.'head.php');
 define('FOOTER', DIR_BASE.'footer.php');
