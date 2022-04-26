@@ -21,15 +21,43 @@ function handleAdminUser($DATA, $ACTION){
   }else{
     $user_email =  escape($DATA["user_email"]);
   }
+  //Role
+  if(empty($DATA["user_role"])){
+    array_push($errors,"Sorry the role is required");
+  }else{
+    $user_role = escape($DATA["user_role"]);
+  }
+  //Password
+  if(empty($DATA["user_password"])){
+    if($ACTION=='ADD'){
+      array_push($errors,"Sorry the password is required");
+    }
+  }else{
+    $user_password = escape($DATA["user_password"]);
+    $user_password = password_hash($user_password,PASSWORD_BCRYPT,array('cost'=>10));
+  }
 
   if(count($errors)===0){
+    if($ACTION === 'ADD'){
+      $query = "INSERT INTO users(user_firstname,user_lastname,user_role,user_email,user_password) ";
+      $query .= "VALUES('$user_firstname','$user_lastname','$user_role','$user_email','$user_password')";
+    }
+    if($ACTION === 'EDIT'){
+
+    }
+    $add_user_q = mysqli_query($db,$query);
+    if(!$add_user_q){
+      array_push($errors, mysqli_error($db));
+    }else{
+      $success = true;
+    }
 
   }
   return [$errors, $success];
 }
 
 function showErrors($postForm){
-  if(count($postForm[0]) !== 0){
+  if(count($postForm[0])){
     echo '<div class="alert alert-warning mt-4">',
     'You\'ve got errors',
     '</div>';
