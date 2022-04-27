@@ -67,6 +67,12 @@ function showErrors($postForm){
   }
 }
 
+function getRoles(){
+  global $db;
+  $roles_query = "SELECT * FROM roles";
+  $result = mysqli_query($db,$roles_query);
+  return $result;
+}
 
 function escape($data){
   global $db;

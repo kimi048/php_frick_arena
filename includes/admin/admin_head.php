@@ -23,7 +23,7 @@
      <script src="<?php echo config("site_domain"); ?>/resources/js/jquery.min.js"></script>
 
     <!-- Bootstrap JS -->
-    <!-- <script src="css/bootstrap-4.4.1/js/bootstrap.min.js"></script> -->
+    <script src="<?php echo config("site_domain"); ?>/resources/css/bootstrap-4.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>

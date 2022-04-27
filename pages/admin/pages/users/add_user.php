@@ -21,9 +21,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   // }
   // echo "User Created";
 
+
+  if($postForm[1]){
+    ?>
+    <div class="alert alert-success alert-dismissible fade show">
+      <h4 class="alert-heading">Well done!</h4>
+      <button type="button" class="close" data-dismiss="alert">
+        <span>&times;</span>
+      </button>
+    </div>
+    <?
+  }
+
 }
-
-
 
 ?>
 
@@ -50,10 +60,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <div class="form-group">
     <label for="user_role">Example select</label>
     <select class="form-control" id="user_role" name="user_role">
-        <option selected disabled>Select a role</option>
-        <option value="1">Admin</option>
-        <option value="2">Guest</option>
-        <option value="3">Super</option>
+    <option selected disabled>Select a role</option>
+      <?php 
+        $roles = getRoles();
+        while($role =mysqli_fetch_assoc($roles)){
+
+        
+      ?>
+        <option value="<?= $role['role_id']; ?>"><?= $role['role_name']; ?></option>
+      <?php 
+        }
+      ?>
     </select>
   </div>
 
