@@ -31,7 +31,7 @@
                     include "edit_user.php";
                     break;
                   default:
-                    // include "edit_user.php";
+                    include "view_all_users.php";
                 }
               ?>
             </main>
