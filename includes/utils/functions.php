@@ -67,6 +67,14 @@ function showErrors($postForm){
   }
 }
 
+function getAdminUser($USER_ID){
+  global $db;
+  $user_id = escape($USER_ID);
+  $query = "SELECT * FROM users WHERE user_id = $user_id";
+  $get_user = mysqli_query($db, $query);
+  return $get_user;
+}
+
 function getRoles(){
   global $db;
   $roles_query = "SELECT * FROM roles";
