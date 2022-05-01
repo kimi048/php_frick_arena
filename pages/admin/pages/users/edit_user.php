@@ -3,7 +3,7 @@
 $postForm = [];
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-  $postForm = handleAdminUser($GLOBALS['_POST'],'ADD');
+  $postForm = handleAdminUser($GLOBALS['_POST'],'EDIT');
 
   if($postForm[1]){
     ?>
@@ -28,6 +28,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <h1 class="h2">Edit user</h1>
 </div>
 <form action="" method="POST">
+  
+   <input type="hidden" value="<?= $row['user_id'] ?>" name="user_id">
+
   <div class="form-group">
     <label for="user_firstname">Name</label>
 

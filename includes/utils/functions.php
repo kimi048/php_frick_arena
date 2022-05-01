@@ -37,13 +37,29 @@ function handleAdminUser($DATA, $ACTION){
     $user_password = password_hash($user_password,PASSWORD_BCRYPT,array('cost'=>10));
   }
 
+  if($ACTION == "EDIT"){
+    if(empty($DATA["user_id"])){
+      array_push($errors,"Sorry we need a user id");
+    }else{
+      $user_id = escape($DATA["user_id"]);
+    }
+  }
+
   if(count($errors)===0){
     if($ACTION === 'ADD'){
       $query = "INSERT INTO users(user_firstname,user_lastname,user_role,user_email,user_password) ";
       $query .= "VALUES('$user_firstname','$user_lastname','$user_role','$user_email','$user_password')";
     }
     if($ACTION === 'EDIT'){
-
+      $query  = "UPDATE users SET ";
+      $query .= "user_firstname = '$user_firstname', ";
+      $query .= "user_lastname = '$user_lastname', ";
+      $query .= "user_role = $user_role, ";
+      $query .= "user_email = '$user_email' ";
+      if(!empty($user_password)){
+        $query .= ", user_password = '$user_password' ";
+      }
+      $query .= "WHERE user_id = $user_id";
     }
     $add_user_q = mysqli_query($db,$query);
     if(!$add_user_q){
