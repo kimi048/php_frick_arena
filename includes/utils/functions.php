@@ -72,6 +72,55 @@ function handleAdminUser($DATA, $ACTION){
   return [$errors, $success];
 }
 
+function handleUserLogin($DATA){
+  global $db;
+  $user_email = $user_password = '';
+  $errors = [];
+  $success = false;
+  //Email
+  if(empty($DATA["user_email"])){
+    array_push($errors,'Sorry the email is required');
+  }else if(!filter_var($DATA["user_email"], FILTER_VALIDATE_EMAIL)){
+    array_push($errors,"Sorry the email is INVALID");
+  }else{
+    $user_email =  escape($DATA["user_email"]);
+  }
+  //Password
+  if(empty($DATA["user_password"])){
+     array_push($errors,"Sorry the password is required");
+  }else{
+    $user_password = escape($DATA["user_password"]);
+  }
+
+  //do the checking
+  if(count($errors) === 0){
+    //USER EXISTS
+    $query = "SELECT * FROM users WHERE user_email='$user_email' ";
+    $result = mysqli_query($db,$query);
+    if(!$result){
+      die("QUERY FAILED".mysqli_error($db));
+    }
+    if(mysqli_num_rows($result) == 1){
+      //email good
+      $row = mysqli_fetch_assoc($result);
+      $verifyPassword = password_verify($user_password, $row['user_passeord']);
+      if($verifyPassword){
+        //good passeord set the session
+        echo 'set sessuion';
+        redirect(getRoute('admin'));
+      }else{
+        array_push($errors,"Sorry,the password is wrong")
+      }
+    }else{
+      array_push($errors, 'Sorry we dont have a user with that email');
+    }
+    //CHECK PASSWORD
+    //SET A SESSION
+  }
+  return [$errors,$success];
+
+}
+
 function showErrors($postForm){
   if(count($postForm[0])){
     echo '<div class="alert alert-warning mt-4">',
@@ -81,6 +130,11 @@ function showErrors($postForm){
       echo '<div class="alert alert-danger">'.$error.'</div>';
     }
   }
+}
+
+function redirect($location){
+  header("Location".$location);
+  exit;
 }
 
 function getAdminUser($USER_ID){
