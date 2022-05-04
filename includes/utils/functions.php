@@ -1,5 +1,13 @@
 <?php
 
+function isLoggedIn(){
+  if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
+    return true;
+  }else{
+    return false;
+  }
+}
+
 function handleAdminUser($DATA, $ACTION){
   global $db;
   $user_id = $user_firstname = $user_lastname = $user_email = $user_role = $user_password = "";
@@ -103,13 +111,13 @@ function handleUserLogin($DATA){
     if(mysqli_num_rows($result) == 1){
       //email good
       $row = mysqli_fetch_assoc($result);
-      $verifyPassword = password_verify($user_password, $row['user_passeord']);
+      $verifyPassword = password_verify($user_password, $row['user_password']);
       if($verifyPassword){
         //good passeord set the session
-        echo 'set sessuion';
+        updateSession($row);
         redirect(getRoute('admin'));
       }else{
-        array_push($errors,"Sorry,the password is wrong")
+        array_push($errors,"Sorry,the password is wrong");
       }
     }else{
       array_push($errors, 'Sorry we dont have a user with that email');
@@ -119,6 +127,15 @@ function handleUserLogin($DATA){
   }
   return [$errors,$success];
 
+}
+
+function updateSession($row){
+  $_SESSION['logged_in'] = true;
+  $_SESSION['user_id'] = $row['user_id'];
+  $_SESSION['user_email'] = $row['user_email'];
+  $_SESSION['user_firstname'] = $row['user_firstname'];
+  $_SESSION['user_lastname'] = $row['user_lastname'];
+  $_SESSION['user_role'] = $row['user_role'];
 }
 
 function showErrors($postForm){
@@ -133,7 +150,7 @@ function showErrors($postForm){
 }
 
 function redirect($location){
-  header("Location".$location);
+  header("Location:".$location);
   exit;
 }
 

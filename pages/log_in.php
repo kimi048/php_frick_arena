@@ -23,6 +23,12 @@
         <input type="password" id="user_password" name="user_password" class="form-control" placeholder="Password">
         
         <button class="btn btn-lg btn-outline-info btn-block" type="submit">Sign in</button>
+        <?php 
+            if($_SERVER['REQUEST_METHOD']=="POST"){
+                showErrors($postform);
+            }
+        
+        ?>
         <p class="mt-5 mb-3 text-muted">
             <a href="<?php echo getRoute('home') ?>" class="text-secondary">Back home</a>
         </p>

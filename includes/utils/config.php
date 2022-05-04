@@ -1,6 +1,6 @@
 <?php
 ob_start();
-
+session_start();
 include 'functions.php';
 
 define('DIR_BASE',dirname(dirname(__FILE__)).'/');
