@@ -1,3 +1,11 @@
+<?php
+    if(!isLoggedIn()){
+        redirect(getRoute('home'));
+    }
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 

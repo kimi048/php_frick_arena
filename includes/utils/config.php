@@ -35,7 +35,7 @@ function config($key = ''){
       'admin_posts' => '/pages/admin/pages/posts',
       'admin_users' => '/pages/admin/pages/users',
       'admin_messages' => '/pages/admin/pages/messages',
-      'logout' => '/pages/admin/pages/logout.php'
+      'logout' => '/pages/admin/pages/users/logout.php'
     ]
   ];
   return isset($config[$key]) ? $config[$key] : null ;

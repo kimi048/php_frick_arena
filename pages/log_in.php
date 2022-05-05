@@ -2,6 +2,9 @@
 <?php
     include "../includes/utils/config.php";
     include HEAD;
+    if(isLoggedIn()){
+        redirect(getRoute('admin'));
+    }
 ?>
 
 <?php
