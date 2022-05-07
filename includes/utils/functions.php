@@ -30,22 +30,32 @@ function handleAdminUser($DATA, $ACTION){
     $user_email =  escape($DATA["user_email"]);
   }
   //Role
-  if(empty($DATA["user_role"])){
-    array_push($errors,"Sorry the role is required");
-  }else{
-    $user_role = escape($DATA["user_role"]);
+  if($ACTION != 'UPD'){
+    if(empty($DATA["user_role"])){
+      array_push($errors,"Sorry the role is required");
+    }else{
+      $user_role = escape($DATA["user_role"]);
+    }
   }
   //Password
-  if(empty($DATA["user_password"])){
-    if($ACTION=='ADD'){
-      array_push($errors,"Sorry the password is required");
+  if($ACTION != "UPD"){
+    if(!empty($DATA["user_password"])){
+      $user_password = escape($DATA["user_password"]);
+      $user_password = password_hash($user_password,PASSWORD_BCRYPT,array('cost'=>10));
     }
   }else{
-    $user_password = escape($DATA["user_password"]);
-    $user_password = password_hash($user_password,PASSWORD_BCRYPT,array('cost'=>10));
+    if(empty($DATA["user_password"])){
+      if($ACTION=='ADD'){
+        array_push($errors,"Sorry the password is required");
+      }
+    }else{
+      $user_password = escape($DATA["user_password"]);
+      $user_password = password_hash($user_password,PASSWORD_BCRYPT,array('cost'=>10));
+    }
   }
+  
 
-  if($ACTION == "EDIT"){
+  if($ACTION == "EDIT" || $ACTION == "UPD"){
     if(empty($DATA["user_id"])){
       array_push($errors,"Sorry we need a user id");
     }else{
@@ -58,11 +68,13 @@ function handleAdminUser($DATA, $ACTION){
       $query = "INSERT INTO users(user_firstname,user_lastname,user_role,user_email,user_password) ";
       $query .= "VALUES('$user_firstname','$user_lastname','$user_role','$user_email','$user_password')";
     }
-    if($ACTION === 'EDIT'){
+    if($ACTION === 'EDIT' || $ACTION === "UPD"){
       $query  = "UPDATE users SET ";
       $query .= "user_firstname = '$user_firstname', ";
       $query .= "user_lastname = '$user_lastname', ";
-      $query .= "user_role = $user_role, ";
+      if($ACTION != "UPD"){
+        $query .= "user_role = $user_role, ";
+      }
       $query .= "user_email = '$user_email' ";
       if(!empty($user_password)){
         $query .= ", user_password = '$user_password' ";
