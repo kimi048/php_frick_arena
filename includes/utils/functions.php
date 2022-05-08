@@ -85,6 +85,12 @@ function handleAdminUser($DATA, $ACTION){
     if(!$add_user_q){
       array_push($errors, mysqli_error($db));
     }else{
+      if($ACTION === 'UPD'){
+        $query = "SELECT * FROM users WHERE user_id = $user_id";
+        $result = mysqli_query($db,$query);
+        $row = mysqli_fetch_assoc($result);
+        updateSession($row);
+      }
       $success = true;
     }
 
