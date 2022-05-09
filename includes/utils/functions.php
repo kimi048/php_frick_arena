@@ -1,5 +1,13 @@
 <?php
 
+function isLoggedInAndAdmin(){
+  if(isLoggedIn() && $_SESSION['user_role'] == 1 || $_SESSION['user_role'] == 3 ){
+    return true;
+  }else{
+    return false;
+  }
+}
+
 function isLoggedIn(){
   if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
     return true;
@@ -63,7 +71,7 @@ function handleAdminUser($DATA, $ACTION){
     }
   }
 
-  if(count($errors)===0){
+  if(count($errors)===0 && isLoggedInAndAdmin()){
     if($ACTION === 'ADD'){
       $query = "INSERT INTO users(user_firstname,user_lastname,user_role,user_email,user_password) ";
       $query .= "VALUES('$user_firstname','$user_lastname','$user_role','$user_email','$user_password')";

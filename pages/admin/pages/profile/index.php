@@ -1,7 +1,9 @@
 <?php
     include  "../../../../includes/utils/config.php";
     include  ADMIN_HEAD;
-
+    if(!isLoggedInAndAdmin()){
+        redirect(getRoute('admin'));
+    }
 ?>
     
     <!-- NAVIGATION -->
