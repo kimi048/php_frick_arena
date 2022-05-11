@@ -17,10 +17,10 @@
           </a>
           <ul class="nav flex-column ml-4">
               <li class="nav-item">
-                  <a class="nav-link" href="<?php echo getRoute('admin_posts') ?>"> Add post </a>
+                  <a class="nav-link" href="<?php echo getRoute('admin_posts') ?>?source=add"> Add post </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="<?php echo getRoute('admin_posts') ?>"> Edit post </a>
+                  <a class="nav-link" href="<?php echo getRoute('admin_posts') ?>?source=edit"> Edit post </a>
               </li>
           </ul>
       </li>

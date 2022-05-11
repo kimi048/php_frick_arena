@@ -1,5 +1,11 @@
 <?php
 
+function kickOutNonAdminsUsers(){
+  if(!isLoggedInAndAdmin()){
+    redirect(getRoute('admin'));
+  }
+}
+
 function isLoggedInAndAdmin(){
   if(isLoggedIn() && $_SESSION['user_role'] == 1 || $_SESSION['user_role'] == 3 ){
     return true;

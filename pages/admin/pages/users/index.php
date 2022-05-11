@@ -1,7 +1,7 @@
 <?php
     include  "../../../../includes/utils/config.php";
     include  ADMIN_HEAD;
-    if(isLoggedIn()){
+    if(!isLoggedInAndAdmin()){
       redirect(getRoute('admin'));
   }
 ?>
