@@ -22,6 +22,17 @@ function isLoggedIn(){
   }
 }
 
+function handleAdminPost($DATA, $ACTION = null){
+  global $db;
+  $post = $DATA['_POST'];
+
+  $post_title = $post['post_title'];
+  $post_content = $post['post_content'];
+  $post_tags = $post['post_tags'];
+  $post_status = $post['post_status'];
+
+}
+
 function handleAdminUser($DATA, $ACTION){
   global $db;
   $user_id = $user_firstname = $user_lastname = $user_email = $user_role = $user_password = "";

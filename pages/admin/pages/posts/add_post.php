@@ -1,5 +1,7 @@
 <?php
-
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+  $postFOrm = handleAdminPost($GLOBALS);
+}
 
 ?>
 
@@ -14,7 +16,7 @@
   </div>
 
   <div class="form-group">
-    <textarea name="post_content"></textarea>
+    <textarea id="editor" name="post_content"></textarea>
   </div>
 
   <div class="form-group">
@@ -42,3 +44,15 @@
 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<script>
+  $(document).ready(function(){
+    ClassicEditor.create(document.querySelector('#editor'))
+    .then(edior=>{
+      console.log(editor);
+    })
+    .catch(error=>{
+      console.log(error);
+    })
+  })
+</script>

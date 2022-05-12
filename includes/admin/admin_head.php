@@ -29,7 +29,8 @@
     <link href="<?php echo config("site_domain"); ?>/resources/css/admin_global.css" rel="stylesheet">
      <!-- jQuery -->
      <script src="<?php echo config("site_domain"); ?>/resources/js/jquery.min.js"></script>
-
+    <!-- CKEditor -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
     <!-- Bootstrap JS -->
     <script src="<?php echo config("site_domain"); ?>/resources/css/bootstrap-4.4.1/js/bootstrap.min.js"></script>
 </head>
