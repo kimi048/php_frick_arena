@@ -26,11 +26,33 @@ function handleAdminPost($DATA, $ACTION = null){
   global $db;
   $post = $DATA['_POST'];
 
-  $post_title = $post['post_title'];
-  $post_content = $post['post_content'];
-  $post_tags = $post['post_tags'];
-  $post_status = $post['post_status'];
+  $post_title = escape($post['post_title']);
+  $post_content = escape($post['post_content']);
+  $post_tags = escape($post['post_tags']);
+  $post_status = escape($post['post_status']);
 
+  $post_owner = $_SESSION["user_id"];
+
+  if($ACTION === 'EIDT'){
+
+  }else{
+    $query = "INSERT INTO posts(post_title,post_content,post_tags,post_status,post_owner) VALUES ('$post_title','$post_content','$post_tags','$post_status',$post_owner)";
+  }
+
+  $result = mysqli_query($db,$query);
+  handleErrorFromQuery($result);
+
+}
+
+function handleErrorFromQuery($result, $message = null){
+  global $db;
+  if($result){
+    if(empty($message)){
+      die("query failed:".mysqli_error($db));
+    }else{
+      die($message);
+    }
+  }
 }
 
 function handleAdminUser($DATA, $ACTION){
