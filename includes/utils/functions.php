@@ -25,6 +25,7 @@ function isLoggedIn(){
 function handleAdminPost($DATA, $ACTION = null){
   global $db;
   $post = $DATA['_POST'];
+  $files = $DATA['_FILES'];
 
   $post_title = escape($post['post_title']);
   $post_content = escape($post['post_content']);
@@ -36,12 +37,22 @@ function handleAdminPost($DATA, $ACTION = null){
   if($ACTION === 'EIDT'){
 
   }else{
+    $uploadImage = uploadImages($files);
+
     $query = "INSERT INTO posts(post_title,post_content,post_tags,post_status,post_owner) VALUES ('$post_title','$post_content','$post_tags','$post_status',$post_owner)";
   }
 
   $result = mysqli_query($db,$query);
   handleErrorFromQuery($result);
 
+}
+
+function uploadImages($FILE){
+  $status = [
+    'valid' => false,
+    'name' => null,
+    'error' => []
+  ];
 }
 
 function handleErrorFromQuery($result, $message = null){
