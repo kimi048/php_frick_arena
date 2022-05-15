@@ -38,13 +38,18 @@ function handleAdminPost($DATA, $ACTION = null){
 
   }else{
     $uploadImage = uploadImages($files);
+    if($uploadImage['valid']){
+      $query = "INSERT INTO posts(post_title,post_content,post_tags,post_status,post_owner) VALUES ('$post_title','$post_content','$post_tags','$post_status',$post_owner)";
+      $result = mysqli_query($db,$query);
+      handleErrorFromQuery($result);
 
-    $query = "INSERT INTO posts(post_title,post_content,post_tags,post_status,post_owner) VALUES ('$post_title','$post_content','$post_tags','$post_status',$post_owner)";
+    }else{
+     print_r($uploadImage['error']);
+    }
+   
   }
 
-  $result = mysqli_query($db,$query);
-  handleErrorFromQuery($result);
-
+  
 }
 
 function uploadImages($FILE){
@@ -53,6 +58,15 @@ function uploadImages($FILE){
     'name' => null,
     'error' => []
   ];
+
+  $file = $FILE['post_image'];
+  //check
+  if(isset($file) && $file['error'] === UPLOAD_ERR_OK){
+    //upload
+  }else{
+    array_push($status['error'],"You need to upload an image");
+    return $status;
+  }
 }
 
 function handleErrorFromQuery($result, $message = null){
