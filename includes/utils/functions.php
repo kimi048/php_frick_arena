@@ -63,6 +63,10 @@ function uploadImages($FILE){
   //check
   if(isset($file) && $file['error'] === UPLOAD_ERR_OK){
     //upload
+    $fileName = escape($file['name']);
+    $filePathName = phpinfo($fileName, PATHINFO_FILENAME);
+    $fileExtention = phpinfo($fileName, PATHINFO_EXTENSION);
+    $newFileName = time().'-'.$filePathName.'.'.$fileExtention;
   }else{
     array_push($status['error'],"You need to upload an image");
     return $status;
