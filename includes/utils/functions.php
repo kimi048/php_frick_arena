@@ -64,9 +64,15 @@ function uploadImages($FILE){
   if(isset($file) && $file['error'] === UPLOAD_ERR_OK){
     //upload
     $fileName = escape($file['name']);
-    $filePathName = phpinfo($fileName, PATHINFO_FILENAME);
-    $fileExtention = phpinfo($fileName, PATHINFO_EXTENSION);
+    $filePathName = pathinfo($fileName, PATHINFO_FILENAME);
+    $fileExtention = pathinfo($fileName, PATHINFO_EXTENSION);
     $newFileName = time().'-'.$filePathName.'.'.$fileExtention;
+    $allowedFileTypes = array('jpg','jpeg');
+    $maxFileSize = 1000000;
+    if(!in_array($fileExtention, $allowedFileTypes)){
+      array_push($status['error'],"Not allowed file type");
+      return $status;
+    }
   }else{
     array_push($status['error'],"You need to upload an image");
     return $status;
