@@ -68,11 +68,19 @@ function uploadImages($FILE){
     $fileExtention = pathinfo($fileName, PATHINFO_EXTENSION);
     $newFileName = time().'-'.$filePathName.'.'.$fileExtention;
     $allowedFileTypes = array('jpg','jpeg');
-    $maxFileSize = 1000000;
+    $maxFileSize = 5000000;//5000000 = 5mb
     if(!in_array($fileExtention, $allowedFileTypes)){
       array_push($status['error'],"Not allowed file type");
       return $status;
     }
+    if($file['size']>$maxFileSize){
+      array_push($status['error'],"Sorry the image is too large");
+      return $status;
+    }
+
+    $uploadDir = $_SERVER['DOCUMENT_ROOT']."/resources/images/";
+    $destinationPath = $uploadDir.$newFileName;
+
   }else{
     array_push($status['error'],"You need to upload an image");
     return $status;
