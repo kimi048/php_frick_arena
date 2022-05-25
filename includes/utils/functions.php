@@ -80,6 +80,13 @@ function uploadImages($FILE){
 
     $uploadDir = $_SERVER['DOCUMENT_ROOT']."/resources/images/";
     $destinationPath = $uploadDir.$newFileName;
+    //chmod neeeded!! to htdocs/flickarena/resources/images
+    if(move_uploaded_file($file['tmp_name'],$destinationPath)){
+      
+    }else{
+      array_push($status['error'],"There was an error with the upload");
+      return $status;
+    }
 
   }else{
     array_push($status['error'],"You need to upload an image");
