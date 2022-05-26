@@ -38,8 +38,10 @@ function handleAdminPost($DATA, $ACTION = null){
 
   }else{
     $uploadImage = uploadImages($files);
+    $post_image = $uploadImage['name'];
+
     if($uploadImage['valid']){
-      $query = "INSERT INTO posts(post_title,post_content,post_tags,post_status,post_owner) VALUES ('$post_title','$post_content','$post_tags','$post_status',$post_owner)";
+      $query = "INSERT INTO posts(post_title,post_content,post_tags,post_status,post_owner,post_image) VALUES ('$post_title','$post_content','$post_tags','$post_status',$post_owner,'$post_image')";
       $result = mysqli_query($db,$query);
       handleErrorFromQuery($result);
 
@@ -82,7 +84,11 @@ function uploadImages($FILE){
     $destinationPath = $uploadDir.$newFileName;
     //chmod neeeded!! to htdocs/flickarena/resources/images
     if(move_uploaded_file($file['tmp_name'],$destinationPath)){
-      
+      return $status = [
+        'valid' => true,
+        'name' => $newFileName,
+        'error' => []
+      ];
     }else{
       array_push($status['error'],"There was an error with the upload");
       return $status;
